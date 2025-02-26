@@ -10,7 +10,7 @@ defmodule AocDay1 do
     |> String.split(~r(\n))
     |> Enum.map(&String.split/1)
     |> Enum.reduce([[], []], fn [x, y], [xs, ys] ->
-      [[str_to_int(x) | xs], [str_to_int(y) | ys]]
+      [[String.to_integer(x) | xs], [String.to_integer(y) | ys]]
     end)
   end
 
@@ -20,10 +20,6 @@ defmodule AocDay1 do
 
   def read_file(:main) do
     File.read("data/data_01_2024.txt")
-  end
-
-  def str_to_int(str) do
-    Integer.parse(str) |> elem(0)
   end
 
   def calculate_distance([xs, ys]) do
@@ -41,7 +37,7 @@ defmodule AocDay1 do
 
   def calculate_similarity([xs, ys]) do
     Enum.map(xs, fn x -> x * count_occurrences(x, ys) end)
-    |> Enum.sum
+    |> Enum.sum()
   end
 
   def count_occurrences(x, xs) do

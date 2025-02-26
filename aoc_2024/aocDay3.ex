@@ -19,7 +19,7 @@ defmodule AocDay3 do
 
   def parse_input(string) do
     Regex.scan(~r/mul\((\d+)\,(\d+)\)/, string)
-    |> Enum.map(fn [_, x, y] -> AocTools.string_to_int(x) * AocTools.string_to_int(y) end)
+    |> Enum.map(fn [_, x, y] -> String.to_integer(x) * String.to_integer(y) end)
     |> Enum.sum()
   end
 
